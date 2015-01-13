@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="BufferTest.cpp" />
+    <ClCompile Include="DisasmTest.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="StringTest.cpp" />
+    <ClCompile Include="XmlDomTest.cpp" />
+    <ClCompile Include="XmlDomSerializerTest.cpp" />
+    <ClCompile Include="PathTest.cpp" />
+    <ClCompile Include="Sha1Test.cpp" />
+    <ClCompile Include="VersionTest.cpp" />
+    <ClCompile Include="CommandLineTest.cpp" />
+    <ClCompile Include="SqliteTest.cpp" />
+    <ClCompile Include="Wow64EmulatorTest.cpp" />
+    <ClCompile Include="GuidTest.cpp" />
+    <ClCompile Include="TimeTest.cpp" />
+    <ClCompile Include="ComTest.cpp" />
+    <ClCompile Include="ChecksumTest.cpp" />
+    <ClCompile Include="StatementDecoratorsTest.cpp" />
+    <ClCompile Include="SignalsTest.cpp" />
+    <ClCompile Include="ShellTest.cpp" />
+    <ClCompile Include="JsonTest.cpp" />
+    <ClCompile Include="UrlTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="Bool.h" />
+    <ClInclude Include="Buffer.h" />
+    <ClInclude Include="BufferStream.h" />
+    <ClInclude Include="Cached.h" />
+    <ClInclude Include="Checksum\Crc.h" />
+    <ClInclude Include="Checksum\Fletcher.h" />
+    <ClInclude Include="ChunkCollection.h" />
+    <ClInclude Include="CommandLine\ArgumentList.h" />
+    <ClInclude Include="CommandLine\CommandList.h" />
+    <ClInclude Include="Com\BStr.h" />
+    <ClInclude Include="Com\Initialize.h" />
+    <ClInclude Include="Com\Ptr.h" />
+    <ClInclude Include="Com\SafeArray.h" />
+    <ClInclude Include="Com\TaskMem.h" />
+    <ClInclude Include="Com\Variant.h" />
+    <ClInclude Include="Concurrency\ConcurrentQueue.h" />
+    <ClInclude Include="Concurrency\WorkQueue.h" />
+    <ClInclude Include="Cryptography\SymmetricCipher.h" />
+    <ClInclude Include="Data\Json\error_handler.hpp" />
+    <ClInclude Include="Data\Json\json.hpp" />
+    <ClInclude Include="Data\Json\json1.hpp" />
+    <ClInclude Include="Data\Json\json2.hpp" />
+    <ClInclude Include="Data\Json\jsoncons_config.hpp" />
+    <ClInclude Include="Data\Json\json_char_traits.hpp" />
+    <ClInclude Include="Data\Json\json_deserializer.hpp" />
+    <ClInclude Include="Data\Json\json_exception.hpp" />
+    <ClInclude Include="Data\Json\json_filter.hpp" />
+    <ClInclude Include="Data\Json\json_input_handler.hpp" />
+    <ClInclude Include="Data\Json\json_output_handler.hpp" />
+    <ClInclude Include="Data\Json\json_reader.hpp" />
+    <ClInclude Include="Data\Json\json_serializer.hpp" />
+    <ClInclude Include="Data\Json\json_structures.hpp" />
+    <ClInclude Include="Data\Json\output_format.hpp" />
+    <ClInclude Include="Data\SQLite\Database.h" />
+    <ClInclude Include="Data\Sqlite\StatementDecorators\ExtendableUpdate.h" />
+    <ClInclude Include="Data\Sqlite\StatementDecorators\ExtendableBase.h" />
+    <ClInclude Include="Data\Sqlite\IStatement.h" />
+    <ClInclude Include="Data\SQLite\SqliteException.h" />
+    <ClInclude Include="Data\SQLite\Query.h" />
+    <ClInclude Include="Data\SQLite\Details\sqlite3.h" />
+    <ClInclude Include="Data\SQLite\Statement.h" />
+    <ClInclude Include="Data\Sqlite\StatementDecorators\ExtendableInsert.h" />
+    <ClInclude Include="Data\Sqlite\StatementDecorators\TemplateExtendableStatement.h" />
+    <ClInclude Include="Data\Sqlite\TemplateStatement.h" />
+    <ClInclude Include="Data\Sqlite\TemplateQuery.h" />
+    <ClInclude Include="Data\Sqlite\Transaction.h" />
+    <ClInclude Include="CommonMemoryStream.h" />
+    <ClInclude Include="CriticalSection.h" />
+    <ClInclude Include="Debug.h" />
+    <ClInclude Include="DebugOutput.h" />
+    <ClInclude Include="Disasm.h" />
+    <ClInclude Include="DynamicFunction.h" />
+    <ClInclude Include="Environment.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="Exception.h" />
+    <ClInclude Include="Executable.h" />
+    <ClInclude Include="ExecutableChunk.h" />
+    <ClInclude Include="FileSystem\File.h" />
+    <ClInclude Include="FileCacheStream.h" />
+    <ClInclude Include="FileSystem\Folder.h" />
+    <ClInclude Include="FileSystem\Shortcut.h" />
+    <ClInclude Include="Guid.h" />
+    <ClInclude Include="Gui\Credentials.h" />
+    <ClInclude Include="Gui\FileDialog.h" />
+    <ClInclude Include="Gui\FolderDialog.h" />
+    <ClInclude Include="Gui\MessageBox.h" />
+    <ClInclude Include="Handles\FindHandle.h" />
+    <ClInclude Include="Handles\Handle.h" />
+    <ClInclude Include="Handles\HandleBase.h" />
+    <ClInclude Include="Handles\RegistryHandle.h" />
+    <ClInclude Include="License.h" />
+    <ClInclude Include="LockGuard.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="Monitor.h" />
+    <ClInclude Include="Net\Http.h" />
+    <ClInclude Include="ILocable.h" />
+    <ClInclude Include="Handles\InternetHandle.h" />
+    <ClInclude Include="IParsable.h" />
+    <ClInclude Include="IStream.h" />
+    <ClInclude Include="IWaitable.h" />
+    <ClInclude Include="Net\Mac.h" />
+    <ClInclude Include="Net\Url.h" />
+    <ClInclude Include="Os\Authorization\Impersonate.h" />
+    <ClInclude Include="Os\Authorization\Sid.h" />
+    <ClInclude Include="Os\Explorer\StartupApproved.h" />
+    <ClInclude Include="Os\InternetShortcut.h" />
+    <ClInclude Include="Os\Memory\Local.h" />
+    <ClInclude Include="Os\MsConfig\StartupFolder.h" />
+    <ClInclude Include="Os\MsConfig\StartupRegistry.h" />
+    <ClInclude Include="Os\RemoteDesktop\Session.h" />
+    <ClInclude Include="Os\RestartManager.h" />
+    <ClInclude Include="Os\Shell.h" />
+    <ClInclude Include="Os\StartupLocation.h" />
+    <ClInclude Include="Os\Wmi\WbemClassObject.h" />
+    <ClInclude Include="Os\Wmi\WbemServices.h" />
+    <ClInclude Include="Registry\Key.h" />
+    <ClInclude Include="libudis86\decode.h" />
+    <ClInclude Include="libudis86\extern.h" />
+    <ClInclude Include="libudis86\input.h" />
+    <ClInclude Include="libudis86\itab.h" />
+    <ClInclude Include="libudis86\types.h" />
+    <ClInclude Include="Module.h" />
+    <ClInclude Include="FileSystem\Path.h" />
+    <ClInclude Include="Privilege.h" />
+    <ClInclude Include="Process.h" />
+    <ClInclude Include="ProcessMemoryStream.h" />
+    <ClInclude Include="Registry\RegEdit.h" />
+    <ClInclude Include="Scheduler\Vista\Action.h" />
+    <ClInclude Include="Scheduler\Vista\DailyTrigger.h" />
+    <ClInclude Include="Scheduler\Vista\ExecAction.h" />
+    <ClInclude Include="Scheduler\Vista\Principal.h" />
+    <ClInclude Include="Scheduler\Vista\RegisteredTask.h" />
+    <ClInclude Include="Scheduler\Vista\TaskDefinition.h" />
+    <ClInclude Include="Scheduler\Vista\TaskFolder.h" />
+    <ClInclude Include="Scheduler\Vista\TaskService.h" />
+    <ClInclude Include="Scheduler\Vista\TaskSettings.h" />
+    <ClInclude Include="Scheduler\Vista\Trigger.h" />
+    <ClInclude Include="Scheduler\Vista\WeeklyTrigger.h" />
+    <ClInclude Include="Scheduler\Xp\Task.h" />
+    <ClInclude Include="Scheduler\Xp\TaskScheduler.h" />
+    <ClInclude Include="Scheduler\Xp\TaskTrigger.h" />
+    <ClInclude Include="ScopeGuard.h" />
+    <ClInclude Include="Cryptography\Hash.h" />
+    <ClInclude Include="Cryptography\IHash.h" />
+    <ClInclude Include="Cryptography\Sha.h" />
+    <ClInclude Include="Serialization\ISerializer.h" />
+    <ClInclude Include="Signals\AnonymousConnection.h" />
+    <ClInclude Include="Signals\ClassConnection.h" />
+    <ClInclude Include="Signals\ConnectionBase.h" />
+    <ClInclude Include="Signals\MultiThreadModes.h" />
+    <ClInclude Include="Signals\SignalBase.h" />
+    <ClInclude Include="Signals\Signals.h" />
+    <ClInclude Include="Signals\Trackable.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Trace.h" />
+    <ClInclude Include="Update.h" />
+    <ClInclude Include="Version.h" />
+    <ClInclude Include="Wow64\Emulator.h" />
+    <ClInclude Include="Wow64\FsRedirection.h" />
+    <ClInclude Include="XmlDom\Serializer.h" />
+    <ClInclude Include="Handles\ServiceHandle.h" />
+    <ClInclude Include="Signature.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Stream.h" />
+    <ClInclude Include="String.h" />
+    <ClInclude Include="System.h" />
+    <ClInclude Include="Thread.h" />
+    <ClInclude Include="Time.h" />
+    <ClInclude Include="Types.h" />
+    <ClInclude Include="XmlDom\XmlDom.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Buffer.cpp" />
+    <ClCompile Include="BufferStream.cpp" />
+    <ClCompile Include="Checksum\Crc.cpp" />
+    <ClCompile Include="Checksum\Fletcher.cpp" />
+    <ClCompile Include="ChunkCollection.cpp" />
+    <ClCompile Include="CommandLine\ArgumentList.cpp" />
+    <ClCompile Include="CommandLine\CommandList.cpp" />
+    <ClCompile Include="Com\BStr.cpp" />
+    <ClCompile Include="Com\Initialize.cpp" />
+    <ClCompile Include="Com\SafeArray.cpp" />
+    <ClCompile Include="Com\TaskMem.cpp" />
+    <ClCompile Include="Com\Variant.cpp" />
+    <ClCompile Include="Concurrency\WorkQueue.cpp" />
+    <ClCompile Include="Cryptography\SymmetricCipher.cpp" />
+    <ClCompile Include="LockGuard.cpp" />
+    <ClCompile Include="Os\RestartManager.cpp" />
+    <ClCompile Include="Signals\AnonymousConnection.cpp" />
+    <ClCompile Include="Signals\ConnectionBase.cpp" />
+    <ClCompile Include="Data\Sqlite\StatementDecorators\ExtendableUpdate.cpp" />
+    <ClCompile Include="Data\Sqlite\StatementDecorators\ExtendableBase.cpp" />
+    <ClCompile Include="Data\SQLite\Database.cpp" />
+    <ClCompile Include="Data\SQLite\SqliteException.cpp" />
+    <ClCompile Include="Data\SQLite\Query.cpp" />
+    <ClCompile Include="Data\Sqlite\Details\sqlite3.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="Data\Sqlite\Statement.cpp" />
+    <ClCompile Include="Data\Sqlite\StatementDecorators\ExtendableInsert.cpp" />
+    <ClCompile Include="Data\Sqlite\Transaction.cpp" />
+    <ClCompile Include="CommonMemoryStream.cpp" />
+    <ClCompile Include="CriticalSection.cpp" />
+    <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="DebugOutput.cpp" />
+    <ClCompile Include="Disasm.cpp" />
+    <ClCompile Include="Environment.cpp" />
+    <ClCompile Include="Event.cpp" />
+    <ClCompile Include="Exception.cpp" />
+    <ClCompile Include="Executable.cpp" />
+    <ClCompile Include="ExecutableChunk.cpp" />
+    <ClCompile Include="FileSystem\File.cpp" />
+    <ClCompile Include="FileCacheStream.cpp" />
+    <ClCompile Include="FileSystem\Folder.cpp" />
+    <ClCompile Include="FileSystem\Shortcut.cpp" />
+    <ClCompile Include="Guid.cpp" />
+    <ClCompile Include="Gui\Credentials.cpp" />
+    <ClCompile Include="Gui\FileDialog.cpp" />
+    <ClCompile Include="Gui\FolderDialog.cpp" />
+    <ClCompile Include="Gui\MessageBox.cpp" />
+    <ClCompile Include="Handles\FindHandle.cpp" />
+    <ClCompile Include="Handles\Handle.cpp" />
+    <ClCompile Include="Handles\RegistryHandle.cpp" />
+    <ClCompile Include="License.cpp" />
+    <ClCompile Include="Net\Http.cpp" />
+    <ClCompile Include="Handles\InternetHandle.cpp" />
+    <ClCompile Include="Net\Mac.cpp" />
+    <ClCompile Include="Net\Url.cpp" />
+    <ClCompile Include="Os\Authorization\Impersonate.cpp" />
+    <ClCompile Include="Os\Authorization\Sid.cpp" />
+    <ClCompile Include="Os\Explorer\StartupApproved.cpp" />
+    <ClCompile Include="Os\InternetShortcut.cpp" />
+    <ClCompile Include="Os\Memory\Local.cpp" />
+    <ClCompile Include="Os\MsConfig\StartupFolder.cpp" />
+    <ClCompile Include="Os\MsConfig\StartupRegistry.cpp" />
+    <ClCompile Include="Os\RemoteDesktop\Session.cpp" />
+    <ClCompile Include="Os\Shell.cpp" />
+    <ClCompile Include="Os\Wmi\WbemClassObject.cpp" />
+    <ClCompile Include="Os\Wmi\WbemServices.cpp" />
+    <ClCompile Include="Registry\Key.cpp" />
+    <ClCompile Include="libudis86\decode.c">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4996</DisableSpecificWarnings>
+    </ClCompile>
+    <ClCompile Include="libudis86\input.c">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="libudis86\itab.c">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="libudis86\udis86.c">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Module.cpp" />
+    <ClCompile Include="FileSystem\Path.cpp" />
+    <ClCompile Include="Privilege.cpp" />
+    <ClCompile Include="Process.cpp" />
+    <ClCompile Include="ProcessMemoryStream.cpp" />
+    <ClCompile Include="Registry\RegEdit.cpp" />
+    <ClCompile Include="Scheduler\Vista\Action.cpp" />
+    <ClCompile Include="Scheduler\Vista\DailyTrigger.cpp" />
+    <ClCompile Include="Scheduler\Vista\ExecAction.cpp" />
+    <ClCompile Include="Scheduler\Vista\Principal.cpp" />
+    <ClCompile Include="Scheduler\Vista\RegisteredTask.cpp" />
+    <ClCompile Include="Scheduler\Vista\TaskDefinition.cpp" />
+    <ClCompile Include="Scheduler\Vista\TaskFolder.cpp" />
+    <ClCompile Include="Scheduler\Vista\TaskService.cpp" />
+    <ClCompile Include="Scheduler\Vista\TaskSettings.cpp" />
+    <ClCompile Include="Scheduler\Vista\Trigger.cpp" />
+    <ClCompile Include="Scheduler\Vista\WeeklyTrigger.cpp" />
+    <ClCompile Include="Scheduler\Xp\Task.cpp" />
+    <ClCompile Include="Scheduler\Xp\TaskScheduler.cpp" />
+    <ClCompile Include="Scheduler\Xp\TaskTrigger.cpp" />
+    <ClCompile Include="Cryptography\Hash.cpp" />
+    <ClCompile Include="Cryptography\Sha.cpp" />
+    <ClCompile Include="Update.cpp" />
+    <ClCompile Include="Version.cpp" />
+    <ClCompile Include="Wow64\Emulator.cpp" />
+    <ClCompile Include="Wow64\FsRedirection.cpp" />
+    <ClCompile Include="XmlDom\Serializer.cpp" />
+    <ClCompile Include="Handles\ServiceHandle.cpp" />
+    <ClCompile Include="Signature.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="Stream.cpp" />
+    <ClCompile Include="String.cpp" />
+    <ClCompile Include="System.cpp" />
+    <ClCompile Include="Thread.cpp" />
+    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="XmlDom\XmlDom.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals" />
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6C632A90-0C84-4182-B436-5DC878905E62}</ProjectGuid>
+    <RootNamespace>WinToolsLib</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\Directories.props" />
+    <Import Project="..\Library.props" />
+    <Import Project="..\StaticRuntime.props" />
+    <Import Project="..\StdAfx.props" />
+    <Import Project="..\LogLevel.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\Directories.props" />
+    <Import Project="..\Library.props" />
+    <Import Project="..\StaticRuntime.props" />
+    <Import Project="..\StdAfx.props" />
+    <Import Project="..\LogLevel.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\Directories.props" />
+    <Import Project="..\Library.props" />
+    <Import Project="..\StaticRuntime.props" />
+    <Import Project="..\StdAfx.props" />
+    <Import Project="..\LogLevel.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\Directories.props" />
+    <Import Project="..\Library.props" />
+    <Import Project="..\StaticRuntime.props" />
+    <Import Project="..\StdAfx.props" />
+    <Import Project="..\LogLevel.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <ExceptionHandling>Async</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <ExceptionHandling>Async</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <ExceptionHandling>Async</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <ExceptionHandling>Async</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
