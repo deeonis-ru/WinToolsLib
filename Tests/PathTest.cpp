@@ -244,28 +244,29 @@ namespace Tests
 				auto check = [](const TChar* input, const TChar* expectedOutput)
 				{
 					auto path = Path::NtToWin32(input, True);
-					Assert::AreEqual(expectedOutput, static_cast<const String&>(path));
+					auto pathStr = path.ToString().ToLower();
+					Assert::AreEqual(expectedOutput, pathStr);
 				};
 
 				check(
 					Text("\\SystemRoot\\System32\\ntoskrnl.exe"),
-					Text("C:\\Windows\\System32\\ntoskrnl.exe"));
+					Text("c:\\windows\\system32\\ntoskrnl.exe"));
 
 				check(
 					Text("\\SystemRoot\\System32\\Drivers\\Ntfs.sys"),
-					Text("C:\\Windows\\System32\\Drivers\\Ntfs.sys"));
+					Text("c:\\windows\\system32\\drivers\\ntfs.sys"));
 
 				check(
 					Text("\\??\\C:\\Windows\\system32\\drivers\\hcmon.sys"),
-					Text("C:\\Windows\\system32\\drivers\\hcmon.sys"));
+					Text("c:\\windows\\system32\\drivers\\hcmon.sys"));
 
 				check(
 					Text("\\WINDOWS\\system32\\ntkrnlpa.exe"),
-					Text("C:\\WINDOWS\\system32\\ntkrnlpa.exe"));
+					Text("c:\\windows\\system32\\ntkrnlpa.exe"));
 
 				check(
 					Text("pci.sys"),
-					Text("C:\\Windows\\System32\\Drivers\\pci.sys"));
+					Text("c:\\windows\\system32\\drivers\\pci.sys"));
 			}
 
 			// Check non kernel convertion rules
@@ -273,24 +274,25 @@ namespace Tests
 				auto check = [](const TChar* input, const TChar* expectedOutput)
 				{
 					auto path = Path::NtToWin32(input, False);
-					Assert::AreEqual(expectedOutput, static_cast<const String&>(path));
+					auto pathStr = path.ToString().ToLower();
+					Assert::AreEqual(expectedOutput, pathStr);
 				};
 
 				check(
 					Text("\\SystemRoot\\System32\\ntoskrnl.exe"),
-					Text("C:\\Windows\\System32\\ntoskrnl.exe"));
+					Text("c:\\windows\\system32\\ntoskrnl.exe"));
 
 				check(
 					Text("\\SystemRoot\\System32\\Drivers\\Ntfs.sys"),
-					Text("C:\\Windows\\System32\\Drivers\\Ntfs.sys"));
+					Text("c:\\windows\\system32\\drivers\\ntfs.sys"));
 
 				check(
 					Text("\\??\\C:\\WINDOWS\\system32\\winlogon.exe"),
-					Text("C:\\WINDOWS\\system32\\winlogon.exe"));
+					Text("c:\\windows\\system32\\winlogon.exe"));
 
 				check(
 					Text("\\\\vmware-host\\Shared Folders\\Shared VMs Folder\\App.exe"),
-					Text("\\\\vmware-host\\Shared Folders\\Shared VMs Folder\\App.exe"));
+					Text("\\\\vmware-host\\shared folders\\shared vms folder\\app.exe"));
 
 				check(
 					Text("services.exe"),
