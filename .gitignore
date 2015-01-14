@@ -1,0 +1,5 @@
+*.opensdf
+*.sdf
+Out/*
+Temp/*
+ipch/*
