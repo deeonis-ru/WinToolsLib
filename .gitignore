@@ -3,3 +3,5 @@
 Out/*
 Temp/*
 ipch/*
+*.suo
+*.user
