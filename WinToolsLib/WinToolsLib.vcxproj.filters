@@ -13,7 +13,6 @@
     <ClInclude Include="BufferStream.h" />
     <ClInclude Include="ChunkCollection.h" />
     <ClInclude Include="CommonMemoryStream.h" />
-    <ClInclude Include="CriticalSection.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Disasm.h" />
     <ClInclude Include="Event.h" />
@@ -21,7 +20,6 @@
     <ClInclude Include="ExecutableChunk.h" />
     <ClInclude Include="FileCacheStream.h" />
     <ClInclude Include="Guid.h" />
-    <ClInclude Include="ILocable.h" />
     <ClInclude Include="IParsable.h" />
     <ClInclude Include="IStream.h" />
     <ClInclude Include="IWaitable.h" />
@@ -151,7 +149,6 @@
     <ClInclude Include="Cryptography\SymmetricCipher.h" />
     <ClInclude Include="Cached.h" />
     <ClInclude Include="Os\RestartManager.h" />
-    <ClInclude Include="LockGuard.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libudis86\decode.c" />
@@ -164,7 +161,6 @@
     <ClCompile Include="BufferStream.cpp" />
     <ClCompile Include="ChunkCollection.cpp" />
     <ClCompile Include="CommonMemoryStream.cpp" />
-    <ClCompile Include="CriticalSection.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Disasm.cpp" />
     <ClCompile Include="Event.cpp" />
@@ -260,6 +256,5 @@
     <ClCompile Include="Signals\AnonymousConnection.cpp" />
     <ClCompile Include="Cryptography\SymmetricCipher.cpp" />
     <ClCompile Include="Os\RestartManager.cpp" />
-    <ClCompile Include="LockGuard.cpp" />
   </ItemGroup>
 </Project>

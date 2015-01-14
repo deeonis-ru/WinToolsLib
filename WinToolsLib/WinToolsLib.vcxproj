@@ -67,7 +67,6 @@
     <ClInclude Include="Data\Sqlite\TemplateQuery.h" />
     <ClInclude Include="Data\Sqlite\Transaction.h" />
     <ClInclude Include="CommonMemoryStream.h" />
-    <ClInclude Include="CriticalSection.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DebugOutput.h" />
     <ClInclude Include="Disasm.h" />
@@ -91,11 +90,9 @@
     <ClInclude Include="Handles\HandleBase.h" />
     <ClInclude Include="Handles\RegistryHandle.h" />
     <ClInclude Include="License.h" />
-    <ClInclude Include="LockGuard.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Monitor.h" />
     <ClInclude Include="Net\Http.h" />
-    <ClInclude Include="ILocable.h" />
     <ClInclude Include="Handles\InternetHandle.h" />
     <ClInclude Include="IParsable.h" />
     <ClInclude Include="IStream.h" />
@@ -187,7 +184,6 @@
     <ClCompile Include="Com\Variant.cpp" />
     <ClCompile Include="Concurrency\WorkQueue.cpp" />
     <ClCompile Include="Cryptography\SymmetricCipher.cpp" />
-    <ClCompile Include="LockGuard.cpp" />
     <ClCompile Include="Os\RestartManager.cpp" />
     <ClCompile Include="Signals\AnonymousConnection.cpp" />
     <ClCompile Include="Signals\ConnectionBase.cpp" />
@@ -214,7 +210,6 @@
     <ClCompile Include="Data\Sqlite\StatementDecorators\ExtendableInsert.cpp" />
     <ClCompile Include="Data\Sqlite\Transaction.cpp" />
     <ClCompile Include="CommonMemoryStream.cpp" />
-    <ClCompile Include="CriticalSection.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DebugOutput.cpp" />
     <ClCompile Include="Disasm.cpp" />
