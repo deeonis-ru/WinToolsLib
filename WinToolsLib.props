@@ -4,8 +4,15 @@
     <ClCompile>
       <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
     <Link>
-      <AdditionalDependencies>WinToolsLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>WinToolsLibDebug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <Link>
+      <AdditionalDependencies>WinToolsLibRelease.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
 </Project>
