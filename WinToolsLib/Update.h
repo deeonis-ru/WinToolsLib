@@ -7,6 +7,14 @@
 
 namespace WinToolsLib
 {
+	enum class UpdateResponseElement
+	{
+		DownloadUrl,
+		DownloadPath,
+		AppName,
+		AppVersion
+	};
+
 	class Update
 	{
 		Update();
@@ -18,6 +26,7 @@ namespace WinToolsLib
 		Update& operator=(Update&& other);
 		Update& operator=(const Update& other);
 
+		typedef std::function<String(const String& response, UpdateResponseElement elem)> ResponseParser;
 		static Update Check(
 			const TChar* server,
 			const UInt16 port,
@@ -25,7 +34,8 @@ namespace WinToolsLib
 			const UInt32 options,
 			const TChar* userAgent,
 			const TChar* appVersion,
-			const TChar* additionalParams = nullptr);
+			const TChar* request,
+			const ResponseParser& parser);
 
 		Bool IsAvailable() const;
 		Version GetLatestVersion() const;
@@ -46,7 +56,7 @@ namespace WinToolsLib
 
 		static const String& ConstructRequest(
 			const TChar* appVersion,
-			const TChar* additionalParams = nullptr);
+			const TChar* req);
 
 		Void MoveFrom(Update& other);
 		Void CopyFrom(const Update& other);
@@ -58,7 +68,8 @@ namespace WinToolsLib
 		UInt32 m_options;
 		String m_userAgent;
 		String m_appVersion;
-		String m_path;
+		String m_response;
+		ResponseParser m_parser;
 	};
 
 	inline Bool Update::IsAvailable() const
@@ -70,22 +81,24 @@ namespace WinToolsLib
 
 	inline Version Update::GetLatestVersion() const
 	{
-		return Version(GetFileName());
+		return Version(m_parser(m_response, UpdateResponseElement::AppVersion));
 	}
 
 	inline String Update::GetFileName() const
 	{
-		auto from = m_path.FindLast(L"/") + 1;
-		auto to = m_path.FindLast(L".");
+		auto path = m_parser(m_response, UpdateResponseElement::DownloadPath);
+		auto from = path.FindLast(L"/") + 1;
+		auto to = path.FindLast(L".");
 		auto count = to - from;
-		auto file = m_path.SubString(from, count);
+		auto file = path.SubString(from, count);
 		return file;
 	}
 
 	inline String Update::GetFileExtension() const
 	{
-		auto from = m_path.FindLast(L".");
-		auto ext = m_path.SubString(from + 1);
+		auto path = m_parser(m_response, UpdateResponseElement::DownloadPath);
+		auto from = path.FindLast(L".");
+		auto ext = path.SubString(from + 1);
 		return ext;
 	}
 }

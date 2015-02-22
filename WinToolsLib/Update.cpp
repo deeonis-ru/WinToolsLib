@@ -8,6 +8,9 @@ namespace WinToolsLib
 {
 	Update::Update()
 	{
+		m_parser = [](const String& response, UpdateResponseElement elem){
+			return Text("");
+		};
 	}
 
 	Update::Update(Update&& other)
@@ -39,12 +42,13 @@ namespace WinToolsLib
 		const UInt32 options,
 		const TChar* userAgent,
 		const TChar* appVersion,
-		const TChar* additionalParams)
+		const TChar* request,
+		const ResponseParser& parser)
 	{
 		auto http = CreateSession(server, port, options, userAgent);
-		const auto& request = ConstructRequest(appVersion, additionalParams);
+		const auto& fullRequest = ConstructRequest(appVersion, request);
 
-		http.SendGetRequest(request, flags);
+		http.SendGetRequest(fullRequest, flags);
 		auto response = http.ReadStringA();
 
 		Update update;
@@ -54,7 +58,8 @@ namespace WinToolsLib
 		update.m_options = options;
 		update.m_userAgent = userAgent;
 		update.m_appVersion = appVersion;
-		update.m_path = String::Convert(response);
+		update.m_parser = parser;
+		update.m_response = String::Convert(response);
 		return update;
 	}
 
@@ -65,8 +70,9 @@ namespace WinToolsLib
 		{
 			try
 			{
+				auto path = m_parser(m_response, UpdateResponseElement::DownloadPath);
 				auto http = CreateSession(m_server, m_port, m_options, m_userAgent);
-				http.SendGetRequest(m_path, m_flags);
+				http.SendGetRequest(path, m_flags);
 
 				auto totalBytes = http.GetContentSize();
 				auto file = http.ReadFile();
@@ -92,8 +98,9 @@ namespace WinToolsLib
 
 	Buffer Update::Download(UInt32 chunks, DownloadCallback callback) const
 	{
+		auto path = m_parser(m_response, UpdateResponseElement::DownloadPath);
 		auto http = CreateSession(m_server, m_port, m_options, m_userAgent);
-		http.SendGetRequest(m_path, m_flags);
+		http.SendGetRequest(path, m_flags);
 
 		auto totalBytes = http.GetContentSize();
 		auto readCallback = [=](UInt32 bytesRead)
@@ -118,29 +125,14 @@ namespace WinToolsLib
 
 	const String& Update::ConstructRequest(
 		const TChar* appVersion,
-		const TChar* additionalParams)
+		const TChar* req)
 	{
 		static String request = [=]()
 		{
-			const auto uid = License::GetUserId();
-			const auto os = System::GetFullVersion();
-
-#ifndef _WIN64
-			const auto bits = Process::IsWow64() ? Text("64") : Text("32");
-#else
-			const auto bits = Text("64");
-#endif
 			auto request = String::FormatS(
-				L"/update.php?uid=%s&app=%s&os=%s&bits=%s",
-				uid.GetBuffer(),
-				appVersion,
-				os.GetBuffer(),
-				bits);
+				req,
+				appVersion);
 
-			if (additionalParams != nullptr)
-			{
-				request += additionalParams;
-			}
 			return request;
 		}();
 
@@ -157,7 +149,8 @@ namespace WinToolsLib
 			m_options = other.m_options;
 			m_userAgent = std::move(other.m_userAgent);
 			m_appVersion = std::move(other.m_appVersion);
-			m_path = std::move(other.m_path);
+			m_response = std::move(other.m_response);
+			m_parser = std::move(other.m_parser);
 
 			other.m_port = 0;
 			other.m_flags = 0;
@@ -175,7 +168,8 @@ namespace WinToolsLib
 			m_options = other.m_options;
 			m_userAgent = other.m_userAgent;
 			m_appVersion = other.m_appVersion;
-			m_path = other.m_path;
+			m_response = other.m_response;
+			m_parser = other.m_parser;
 		}
 	}
 }
