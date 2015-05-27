@@ -3,6 +3,7 @@
 #include "IWaitable.h"
 #include "String.h"
 #include "Buffer.h"
+#include "Thread.h"
 #include "Handles\Handle.h"
 #include <list>
 
@@ -11,6 +12,8 @@ namespace WinToolsLib
 	class Process;
 	typedef std::list<Process> ProcessList;
 	typedef std::list<String> ProcessModuleList;
+
+	Thread InjectDll(Process& process, const String& dllPath);
 	
 	using namespace Handles;
 
@@ -47,6 +50,15 @@ namespace WinToolsLib
 
 		Void Kill(UInt32 exitCode = 0);
 
+		enum class CreationThreadFlags
+		{
+			CreateDefault = 0,
+			CreateSuspended = 0x00000004,
+			CreateSizeParamIsReseravetion = 0x00010000
+		};
+
+		Thread CreateRemoteThread(LPTHREAD_START_ROUTINE proc, PVOID param, CreationThreadFlags flags = CreationThreadFlags::CreateDefault) const;
+
 		static ProcessList GetList();
 		static Bool IsWow64();
 
@@ -56,7 +68,7 @@ namespace WinToolsLib
 		static Process Run(const TChar* path, const TChar* params = nullptr, const TChar* verb = nullptr);
 		static Process RunElevated(const TChar* path, const TChar* params);
 
-		enum CreationFlags
+		enum class CreationFlags
 		{
 			CreateDefault = 0,
 			CreateNoWindow = 0x08000000,
@@ -64,7 +76,7 @@ namespace WinToolsLib
 			CreateAndDebug = 0x00000002
 		};
 
-		static Process Create(const TChar* commandLine, CreationFlags flags = CreateDefault);
+		static Process Create(const TChar* commandLine, CreationFlags flags = CreationFlags::CreateDefault);
 
 		static Process GetCurrent();
 
@@ -80,6 +92,8 @@ namespace WinToolsLib
 		Handle m_handle;
 
 		static const UInt32 m_invalidId = -1;
+
+		friend Thread InjectDll(Process& process, const String& dllPath);
 	};
 
 	inline UInt32 Process::GetId() const

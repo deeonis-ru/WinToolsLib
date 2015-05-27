@@ -8,6 +8,43 @@
 
 namespace WinToolsLib
 {
+	Thread InjectDll(Process& process, const String& dllPath)
+	{
+		const auto size = (dllPath.GetSize() + 1) * sizeof(TChar);
+		auto remotePath = ::VirtualAllocEx(
+			process.m_handle,
+			NULL,
+			size,
+			MEM_COMMIT,
+			PAGE_READWRITE);
+		if (!remotePath)
+		{
+			THROW_LAST_ERROR_EXCEPTION();
+		}
+
+		if (!::WriteProcessMemory(process.m_handle, remotePath, dllPath.GetBuffer(), size, NULL))
+		{
+			THROW_LAST_ERROR_EXCEPTION();
+		}
+
+		auto kernel32 = ::GetModuleHandle(_T("Kernel32"));
+		if (!kernel32)
+		{
+			THROW_LAST_ERROR_EXCEPTION();
+		}
+
+#ifdef _UNICODE
+		auto loadLibrary = "LoadLibraryW";
+#else
+		auto loadLibrary = "LoadLibraryA";
+#endif
+
+		return process.CreateRemoteThread(
+			(LPTHREAD_START_ROUTINE) ::GetProcAddress(kernel32, loadLibrary),
+			remotePath);
+		// TODO: We must free memory at the end of thread
+	}
+
 	Process::Process(UInt32 id) :
 		m_id(id),
 		m_parentId(m_invalidId)
@@ -193,6 +230,28 @@ namespace WinToolsLib
 		}
 	}
 
+	Thread Process::CreateRemoteThread(LPTHREAD_START_ROUTINE proc, PVOID param, CreationThreadFlags flags) const
+	{
+		auto currentProcId = ::GetCurrentProcess();
+		// TODO: throw exception if currentProcId == m_handle
+
+		DWORD threadId = 0;
+		Handle threadHandle = ::CreateRemoteThread(
+			m_handle,
+			NULL,
+			0,
+			proc,
+			param,
+			(DWORD)flags,
+			&threadId);
+		if (threadHandle.IsNull())
+		{
+			THROW_LAST_ERROR_EXCEPTION();
+		}
+
+		return Thread(threadId, std::move(threadHandle));
+	}
+
 	ProcessList Process::GetList()
 	{
 		Handle hSnapshot = ::CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
@@ -337,7 +396,7 @@ namespace WinToolsLib
 			NULL,                    // Process handle is not inheritable
 			NULL,                    // Thread handle is not inheritable
 			FALSE,                   // Set handle inheritance to FALSE
-			flags,                   // Creation flags
+			(DWORD)flags,            // Creation flags
 			NULL,                    // Use parent's environment block
 			NULL,                    // Use parent's starting directory 
 			&startupInfo,            // Pointer to STARTUPINFO structure
