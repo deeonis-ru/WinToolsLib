@@ -50,6 +50,9 @@ namespace WinToolsLib { namespace Scheduler { namespace Vista
 		StringW GetExecutionTimeLimit() const;
 		Void SetExecutionTimeLimit(const WChar* limit);
 
+		Bool GetEnabled() const;
+		Void SetEnabled(Bool value);
+
 	protected:
 		Void MoveFrom(TaskSettings& other);
 

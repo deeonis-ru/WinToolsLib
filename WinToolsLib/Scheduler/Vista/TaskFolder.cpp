@@ -58,52 +58,6 @@ namespace WinToolsLib { namespace Scheduler { namespace Vista
 		return RegisteredTask(std::move(task));
 	}
 
-	RegisteredTask TaskFolder::RegisterTask(const WChar* path, ITaskDefinition* definition)
-	{
-		Com::Ptr<IPrincipal> principal;
-
-		auto hr = definition->get_Principal(&principal);
-		if (FAILED(hr))
-		{
-			THROW_WIN32_EXCEPTION(hr);
-		}
-
-		_bstr_t userId;
-
-		hr = principal->get_UserId(userId.GetAddress());
-		if (FAILED(hr))
-		{
-			THROW_WIN32_EXCEPTION(hr);
-		}
-
-		TASK_LOGON_TYPE logonType;
-
-		hr = principal->get_LogonType(&logonType);
-		if (FAILED(hr))
-		{
-			THROW_WIN32_EXCEPTION(hr);
-		}
-
-		Com::Ptr<IRegisteredTask> task;
-
-		hr = m_folder->RegisterTaskDefinition(
-			_bstr_t(path),
-			definition,
-			TASK_CREATE,
-			_variant_t(userId),
-			_variant_t(),
-			logonType,
-			_variant_t(),
-			&task);
-		
-		if (FAILED(hr))
-		{
-			THROW_WIN32_EXCEPTION(hr);
-		}
-
-		return RegisteredTask(std::move(task));
-	}
-
 	Void TaskFolder::DeleteTask(const WChar* name)
 	{
 		auto hr = m_folder->DeleteTask(_bstr_t(name), 0);
@@ -168,6 +122,52 @@ namespace WinToolsLib { namespace Scheduler { namespace Vista
 		{
 			m_folder = std::move(other.m_folder);
 		}
+	}
+
+	RegisteredTask TaskFolder::RegisterTaskImpl(const WChar* path, ITaskDefinition* definition, LONG flags)
+	{
+		Com::Ptr<IPrincipal> principal;
+
+		auto hr = definition->get_Principal(&principal);
+		if (FAILED(hr))
+		{
+			THROW_WIN32_EXCEPTION(hr);
+		}
+
+		_bstr_t userId;
+
+		hr = principal->get_UserId(userId.GetAddress());
+		if (FAILED(hr))
+		{
+			THROW_WIN32_EXCEPTION(hr);
+		}
+
+		TASK_LOGON_TYPE logonType;
+
+		hr = principal->get_LogonType(&logonType);
+		if (FAILED(hr))
+		{
+			THROW_WIN32_EXCEPTION(hr);
+		}
+
+		Com::Ptr<IRegisteredTask> task;
+
+		hr = m_folder->RegisterTaskDefinition(
+			_bstr_t(path),
+			definition,
+			flags,
+			_variant_t(userId),
+			_variant_t(),
+			logonType,
+			_variant_t(),
+			&task);
+
+		if (FAILED(hr))
+		{
+			THROW_WIN32_EXCEPTION(hr);
+		}
+
+		return RegisteredTask(std::move(task));
 	}
 
 } } }

@@ -203,6 +203,28 @@ namespace WinToolsLib { namespace Scheduler { namespace Vista
 		}
 	}
 
+	Bool TaskSettings::GetEnabled() const
+	{
+		_variant_t value;
+
+		auto hr = m_settings->get_Enabled(&value.boolVal);
+		if (FAILED(hr))
+		{
+			THROW_WIN32_EXCEPTION(hr);
+		}
+
+		return value.boolVal != 0;
+	}
+
+	Void TaskSettings::SetEnabled(Bool value)
+	{
+		auto hr = m_settings->put_Enabled(_variant_t(value));
+		if (FAILED(hr))
+		{
+			THROW_WIN32_EXCEPTION(hr);
+		}
+	}
+
 	Void TaskSettings::MoveFrom(TaskSettings& other)
 	{
 		if (this != &other)

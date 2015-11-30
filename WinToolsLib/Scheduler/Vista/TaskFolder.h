@@ -26,7 +26,8 @@ namespace WinToolsLib { namespace Scheduler { namespace Vista
 		TaskFolder GetFolder(const WChar* path, Bool createIfNotExist = False);
 
 		RegisteredTask GetTask(const WChar* path);
-		RegisteredTask RegisterTask(const WChar* path, ITaskDefinition* definition);
+		inline RegisteredTask RegisterTask(const WChar* path, ITaskDefinition* definition);
+		inline RegisteredTask UpdateTask(const WChar* path, ITaskDefinition* definition);
 
 		Void DeleteTask(const WChar* name);
 		Void DeleteFolder(const WChar* path);
@@ -38,7 +39,20 @@ namespace WinToolsLib { namespace Scheduler { namespace Vista
 		Void MoveFrom(TaskFolder& other);
 
 	private:
+		RegisteredTask RegisterTaskImpl(const WChar* path, ITaskDefinition* definition, LONG flags);
+
+	private:
 		Com::Ptr<ITaskFolder> m_folder;
 	};
+
+	RegisteredTask TaskFolder::RegisterTask(const WChar* path, ITaskDefinition* definition)
+	{
+		return RegisterTaskImpl(path, definition, TASK_CREATE);
+	}
+
+	RegisteredTask TaskFolder::UpdateTask(const WChar* path, ITaskDefinition* definition)
+	{
+		return RegisterTaskImpl(path, definition, TASK_UPDATE);
+	}
 
 } } }

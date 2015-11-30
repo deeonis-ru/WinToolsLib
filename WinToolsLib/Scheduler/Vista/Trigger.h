@@ -15,7 +15,8 @@ namespace WinToolsLib { namespace Scheduler { namespace Vista
 	{
 		Time = TASK_TRIGGER_TIME,
 		Daily = TASK_TRIGGER_DAILY,
-		Weekly = TASK_TRIGGER_WEEKLY
+		Weekly = TASK_TRIGGER_WEEKLY,
+		Logon = TASK_TRIGGER_LOGON
 	};
 
 	class Trigger
