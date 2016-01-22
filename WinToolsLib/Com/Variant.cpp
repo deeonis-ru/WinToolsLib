@@ -111,6 +111,22 @@ namespace WinToolsLib { namespace Com
 		return variant;
 	}
 
+	IDispatch* Variant::ToIDispatch() const
+	{
+		if (VT_DISPATCH != m_var.vt)
+		{
+			THROW_VARIANT_WRONG_TYPE_EXCEPTION(VT_DISPATCH);
+		}
+
+		if (VT_NULL == m_var.vt ||
+			VT_EMPTY == m_var.vt)
+		{
+			return nullptr;
+		}
+
+		return m_var.pdispVal;
+	}
+
 	Void Variant::MoveFrom(Variant& other)
 	{
 		if (&m_var != &other.m_var)

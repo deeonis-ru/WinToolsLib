@@ -149,6 +149,9 @@
     <ClInclude Include="Cryptography\SymmetricCipher.h" />
     <ClInclude Include="Cached.h" />
     <ClInclude Include="Os\RestartManager.h" />
+    <ClInclude Include="Os\Firewall\FirewallPolicy.h" />
+    <ClInclude Include="Os\Firewall\RuleList.h" />
+    <ClInclude Include="Os\Firewall\Rule.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libudis86\decode.c" />
@@ -256,5 +259,8 @@
     <ClCompile Include="Signals\AnonymousConnection.cpp" />
     <ClCompile Include="Cryptography\SymmetricCipher.cpp" />
     <ClCompile Include="Os\RestartManager.cpp" />
+    <ClCompile Include="Os\Firewall\FirewallPolicy.cpp" />
+    <ClCompile Include="Os\Firewall\RuleList.cpp" />
+    <ClCompile Include="Os\Firewall\Rule.cpp" />
   </ItemGroup>
 </Project>

@@ -32,6 +32,8 @@ namespace WinToolsLib { namespace Com
 		StringArray ToStringArray() const;
 		static Variant FromStringArray(const StringArray& stringArray);
 
+		IDispatch* ToIDispatch() const;
+
 	protected:
 		Void MoveFrom(Variant& other);
 		Void CopyFrom(const Variant& other);

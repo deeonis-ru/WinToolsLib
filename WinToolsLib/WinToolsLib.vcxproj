@@ -118,6 +118,9 @@
     <ClInclude Include="Os\Authorization\Impersonate.h" />
     <ClInclude Include="Os\Authorization\Sid.h" />
     <ClInclude Include="Os\Explorer\StartupApproved.h" />
+    <ClInclude Include="Os\Firewall\FirewallPolicy.h" />
+    <ClInclude Include="Os\Firewall\Rule.h" />
+    <ClInclude Include="Os\Firewall\RuleList.h" />
     <ClInclude Include="Os\InternetShortcut.h" />
     <ClInclude Include="Os\Memory\Local.h" />
     <ClInclude Include="Os\MsConfig\StartupFolder.h" />
@@ -200,6 +203,9 @@
     <ClCompile Include="Com\Variant.cpp" />
     <ClCompile Include="Concurrency\WorkQueue.cpp" />
     <ClCompile Include="Cryptography\SymmetricCipher.cpp" />
+    <ClCompile Include="Os\Firewall\FirewallPolicy.cpp" />
+    <ClCompile Include="Os\Firewall\Rule.cpp" />
+    <ClCompile Include="Os\Firewall\RuleList.cpp" />
     <ClCompile Include="Os\RestartManager.cpp" />
     <ClCompile Include="Signals\AnonymousConnection.cpp" />
     <ClCompile Include="Signals\ConnectionBase.cpp" />
