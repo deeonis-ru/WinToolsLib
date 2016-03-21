@@ -12,6 +12,7 @@
 
 namespace WinToolsLib
 {
+	using namespace Handles;
 	Module::Module(String name, String path, PByte base, UInt32 size, Bool isKernel) :
 		m_name(std::move(name)),
 		m_path(std::move(path)),

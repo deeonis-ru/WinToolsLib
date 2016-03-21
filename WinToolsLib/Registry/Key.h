@@ -9,13 +9,14 @@
 #include "..\String.h"
 #include "..\Buffer.h"
 #include "..\Handles\RegistryHandle.h"
-#include "..\Event.h"
+#include "..\Process\Event.h"
 
 namespace WinToolsLib
 {
 	namespace Registry
 	{
 		using namespace Handles;
+		using namespace Process;
 
 		enum class ValueType
 		{

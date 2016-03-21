@@ -1,12 +1,12 @@
 #pragma once
-#include "Types.h"
-#include "Exception.h"
+#include "..\Types.h"
+#include "..\Exception.h"
+#include "..\Handles\Handle.h"
 #include "IWaitable.h"
-#include "Handles\Handle.h"
 #include <memory>
 #include <list>
 
-namespace WinToolsLib
+namespace WinToolsLib { namespace Process
 {
 	class Thread;
 	typedef std::list<Thread> ThreadList;
@@ -79,4 +79,4 @@ namespace WinToolsLib
 
 		return Thread(std::move(handle));
 	}
-}
+}}

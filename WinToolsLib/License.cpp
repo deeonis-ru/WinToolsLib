@@ -1,8 +1,8 @@
 #include "License.h"
 #include "Exception.h"
-#include "Process.h"
 #include "Registry\Key.h"
 #include "Checksum\Crc.h"
+#include "Process\Process.h"
 
 namespace WinToolsLib
 {
@@ -41,7 +41,7 @@ namespace WinToolsLib
 			auto currentVersion = Registry::Key::Open(
 				HKEY_LOCAL_MACHINE,
 				Text("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"),
-				Process::IsWow64() ? KEY_WOW64_64KEY | KEY_QUERY_VALUE : KEY_QUERY_VALUE);
+				Process::Process::IsWow64() ? KEY_WOW64_64KEY | KEY_QUERY_VALUE : KEY_QUERY_VALUE);
 
 			const String keyName(Text("ProductId"));
 			String productId;

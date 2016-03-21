@@ -1,12 +1,12 @@
 #include "Process.h"
-#include "Exception.h"
-#include "System.h"
-#include "FileSystem\Path.h"
-#include "Handles\Handle.h"
+#include "..\Exception.h"
+#include "..\System.h"
+#include "..\FileSystem\Path.h"
+#include "..\Handles\Handle.h"
 
 #include <TlHelp32.h>
 
-namespace WinToolsLib
+namespace WinToolsLib { namespace Process
 {
 	Thread InjectDll(Process& process, const String& dllPath)
 	{
@@ -443,4 +443,4 @@ namespace WinToolsLib
 			m_handle = other.m_handle;
 		}
 	}
-}
+}}

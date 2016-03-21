@@ -1,9 +1,9 @@
 #pragma once
-#include "Types.h"
+#include "..\Types.h"
+#include "..\Handles\Handle.h"
 #include "IWaitable.h"
-#include "Handles\Handle.h"
 
-namespace WinToolsLib
+namespace WinToolsLib { namespace Process
 {
 	using namespace Handles;
 
@@ -34,4 +34,4 @@ namespace WinToolsLib
 	{
 		return m_handle;
 	}
-}
+}}

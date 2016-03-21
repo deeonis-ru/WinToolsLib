@@ -15,23 +15,19 @@
     <ClInclude Include="CommonMemoryStream.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Disasm.h" />
-    <ClInclude Include="Event.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="ExecutableChunk.h" />
     <ClInclude Include="FileCacheStream.h" />
     <ClInclude Include="Guid.h" />
     <ClInclude Include="IParsable.h" />
     <ClInclude Include="IStream.h" />
-    <ClInclude Include="IWaitable.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="Privilege.h" />
-    <ClInclude Include="Process.h" />
     <ClInclude Include="ProcessMemoryStream.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Stream.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="System.h" />
-    <ClInclude Include="Thread.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Serialization\ISerializer.h" />
     <ClInclude Include="XmlDom\Serializer.h" />
@@ -152,6 +148,11 @@
     <ClInclude Include="Os\Firewall\FirewallPolicy.h" />
     <ClInclude Include="Os\Firewall\RuleList.h" />
     <ClInclude Include="Os\Firewall\Rule.h" />
+    <ClInclude Include="Process\Mutex.h" />
+    <ClInclude Include="Process\Process.h" />
+    <ClInclude Include="Process\Thread.h" />
+    <ClInclude Include="Process\IWaitable.h" />
+    <ClInclude Include="Process\Event.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libudis86\decode.c" />
@@ -166,7 +167,6 @@
     <ClCompile Include="CommonMemoryStream.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Disasm.cpp" />
-    <ClCompile Include="Event.cpp" />
     <ClCompile Include="Exception.cpp" />
     <ClCompile Include="Executable.cpp" />
     <ClCompile Include="ExecutableChunk.cpp" />
@@ -174,13 +174,11 @@
     <ClCompile Include="Guid.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Privilege.cpp" />
-    <ClCompile Include="Process.cpp" />
     <ClCompile Include="ProcessMemoryStream.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Stream.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="System.cpp" />
-    <ClCompile Include="Thread.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="XmlDom\Serializer.cpp" />
     <ClCompile Include="FileSystem\File.cpp" />
@@ -262,5 +260,9 @@
     <ClCompile Include="Os\Firewall\FirewallPolicy.cpp" />
     <ClCompile Include="Os\Firewall\RuleList.cpp" />
     <ClCompile Include="Os\Firewall\Rule.cpp" />
+    <ClCompile Include="Process\Mutex.cpp" />
+    <ClCompile Include="Process\Process.cpp" />
+    <ClCompile Include="Process\Thread.cpp" />
+    <ClCompile Include="Process\Event.cpp" />
   </ItemGroup>
 </Project>

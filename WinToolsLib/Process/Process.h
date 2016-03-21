@@ -1,13 +1,13 @@
 #pragma once
-#include "Types.h"
+#include "..\Types.h"
+#include "..\String.h"
+#include "..\Buffer.h"
+#include "..\Handles\Handle.h"
 #include "IWaitable.h"
-#include "String.h"
-#include "Buffer.h"
 #include "Thread.h"
-#include "Handles\Handle.h"
 #include <list>
 
-namespace WinToolsLib
+namespace WinToolsLib { namespace Process
 {
 	class Process;
 	typedef std::list<Process> ProcessList;
@@ -115,4 +115,4 @@ namespace WinToolsLib
 	{
 		return m_path;
 	}
-}
+}}

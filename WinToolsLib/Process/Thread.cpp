@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include <TlHelp32.h>
 
-namespace WinToolsLib
+namespace WinToolsLib { namespace Process
 {
 	Thread::Thread(UInt32 id) :
 		m_id(id)
@@ -149,4 +149,4 @@ namespace WinToolsLib
 			m_handle = other.m_handle;
 		}
 	}
-}
+}}

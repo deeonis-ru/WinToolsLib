@@ -1,12 +1,13 @@
 #pragma once
 #include "..\Types.h"
-#include "..\Event.h"
+#include "..\Process\Event.h"
 
 #include <mutex>
 #include <list>
 
 namespace WinToolsLib { namespace Concurrency
 {
+	using namespace Process;
 	template <class T>
 	class ConcurrentQueue
 	{

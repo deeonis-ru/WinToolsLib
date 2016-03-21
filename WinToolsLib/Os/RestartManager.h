@@ -1,6 +1,6 @@
 #pragma once
 #include "..\Types.h"
-#include "..\Process.h"
+#include "..\Process\Process.h"
 
 namespace WinToolsLib { namespace Os
 {
@@ -10,7 +10,7 @@ namespace WinToolsLib { namespace Os
 		RestartManager();
 		~RestartManager();
 
-		std::vector<Process> GetResourceUsedProcessList(const TChar* path);
+		std::vector<WinToolsLib::Process::Process> GetResourceUsedProcessList(const TChar* path);
 
 	private:
 		DWORD m_session;

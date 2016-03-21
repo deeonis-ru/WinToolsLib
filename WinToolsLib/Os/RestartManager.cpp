@@ -9,6 +9,7 @@
 
 namespace WinToolsLib { namespace Os
 {
+	typedef WinToolsLib::Process::Process Process;
 	RestartManager::RestartManager() 
 	{
 #ifdef _USING_V110_SDK71_

@@ -1,88 +1,92 @@
-#include "Event.h"
-#include "Exception.h"
+#include "Mutex.h"
+#include "..\Exception.h"
 #include <Windows.h>
 
-namespace WinToolsLib
+namespace WinToolsLib { namespace Process
 {
-	Event::Event()
+	Mutex::Mutex()
+		: m_isExist(False)
 	{
 	}
-	
-	Event::Event(Event&& other)
+
+	Mutex::Mutex(Mutex&& other)
 		: m_handle(std::move(other.m_handle))
+		, m_isExist(std::move(other.m_isExist))
 	{
 	}
 
-	Event::~Event()
+	Mutex::~Mutex()
 	{
 	}
 
-	Void Event::Create(Bool manualReset, Bool initialState, const TChar* name)
+	Void Mutex::Create(Bool initialState, const TChar* name)
 	{
-		m_handle = ::CreateEvent(
+		m_handle = ::CreateMutex(
 			NULL,
-			manualReset,
 			initialState,
 			name);
-		
+
 		if (!m_handle.IsValid())
 		{
 			THROW_LAST_ERROR_EXCEPTION();
 		}
-	}
-	
-	Void Event::Open(Bool modifyState, Bool inheritHandle, const TChar* name)
-	{
-		m_handle = ::OpenEvent(
-			modifyState ? EVENT_MODIFY_STATE : SYNCHRONIZE,
-			inheritHandle,
-			name);
-		
-		if (!m_handle.IsValid())
-		{
-			THROW_LAST_ERROR_EXCEPTION();
-		}
+
+		m_isExist = ::GetLastError() == ERROR_ALREADY_EXISTS;
 	}
 
-	Bool Event::IsValid() const
+	Void Mutex::Open(Bool modifyState, Bool inheritHandle, const TChar* name)
+	{
+		m_handle = ::OpenMutex(
+			modifyState ? MUTEX_MODIFY_STATE : SYNCHRONIZE,
+			inheritHandle,
+			name);
+
+		if (!m_handle.IsValid())
+		{
+			THROW_LAST_ERROR_EXCEPTION();
+		}
+		m_isExist = True;
+	}
+
+	Bool Mutex::IsValid() const
 	{
 		return m_handle.IsValid();
 	}
 
-	Void Event::Set()
+	Void Mutex::Set()
 	{
 		if (!m_handle.IsValid())
 		{
 			THROW_INVALID_HANDLE_EXCEPTION();
 		}
 
-		BOOL success = ::SetEvent(m_handle);
-		if (!success)
+		const auto res = ::WaitForSingleObject(m_handle, INFINITE);
+		if (res != WAIT_OBJECT_0)
 		{
 			THROW_LAST_ERROR_EXCEPTION();
 		}
 	}
 
-	Void Event::Reset()
+	Void Mutex::Release()
 	{
 		if (!m_handle.IsValid())
 		{
 			THROW_INVALID_HANDLE_EXCEPTION();
 		}
 
-		BOOL success = ::ResetEvent(m_handle);
+		BOOL success = ::ReleaseMutex(m_handle);
 		if (!success)
 		{
 			THROW_LAST_ERROR_EXCEPTION();
 		}
 	}
 
-	Void Event::Wait() const
+	Void Mutex::Wait() const
 	{
 		Wait(INFINITE);
 	}
 
-	Void Event::Wait(UInt32 milliseconds) const
+	Void Mutex::Wait(UInt32 milliseconds) const
 	{
 		if (!m_handle.IsValid())
 		{
@@ -95,4 +99,4 @@ namespace WinToolsLib
 			THROW_LAST_ERROR_EXCEPTION();
 		}
 	}
-}
+}}

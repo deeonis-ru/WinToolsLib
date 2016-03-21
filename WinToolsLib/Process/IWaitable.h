@@ -1,7 +1,7 @@
 #pragma once
-#include "Types.h"
+#include "..\Types.h"
 
-namespace WinToolsLib
+namespace WinToolsLib { namespace Process
 {
 	class IWaitable
 	{
@@ -11,4 +11,4 @@ namespace WinToolsLib
 		virtual Void Wait() const = 0;
 		virtual Void Wait(UInt32 milliseconds) const = 0;
 	};
-}
+}}
