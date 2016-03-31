@@ -3,27 +3,27 @@
 #include "String.h"
 #include "DebugOutput.h"
 
-#if LOG_LEVEL & 0x0100
+#if _WINTOOLSLIB_LOG_LEVEL & 0x0100
 #define ENABLE_LOG_CHECKPOINT
 #endif
 
-#if LOG_LEVEL & 0x0010
+#if _WINTOOLSLIB_LOG_LEVEL & 0x0010
 #define ENABLE_LOG_INFO
 #endif
 
-#if LOG_LEVEL & 0x0008
+#if _WINTOOLSLIB_LOG_LEVEL & 0x0008
 #define ENABLE_LOG_EXCEPTION
 #endif
 
-#if LOG_LEVEL & 0x0004
+#if _WINTOOLSLIB_LOG_LEVEL & 0x0004
 #define ENABLE_LOG_WARNING
 #endif
 
-#if LOG_LEVEL & 0x0002
+#if _WINTOOLSLIB_LOG_LEVEL & 0x0002
 #define ENABLE_LOG_ERROR
 #endif
 
-#if LOG_LEVEL & 0x0001
+#if _WINTOOLSLIB_LOG_LEVEL & 0x0001
 #define ENABLE_LOG_FATAL
 #endif
 

@@ -4,23 +4,23 @@
 #include "Singleton.h"
 #include "Concurrency\WorkQueue.h"
 
-#if LOG_LEVEL & 0x0010
+#if _WINTOOLSLIB_LOG_LEVEL & 0x0010
 #define ENABLE_TRACE_INFO
 #endif
 
-#if LOG_LEVEL & 0x0008
+#if _WINTOOLSLIB_LOG_LEVEL & 0x0008
 #define ENABLE_TRACE_EXCEPTION
 #endif
 
-#if LOG_LEVEL & 0x0004
+#if _WINTOOLSLIB_LOG_LEVEL & 0x0004
 #define ENABLE_TRACE_WARNING
 #endif
 
-#if LOG_LEVEL & 0x0002
+#if _WINTOOLSLIB_LOG_LEVEL & 0x0002
 #define ENABLE_TRACE_ERROR
 #endif
 
-#if LOG_LEVEL & 0x0001
+#if _WINTOOLSLIB_LOG_LEVEL & 0x0001
 #define ENABLE_TRACE_FATAL
 #endif
 
