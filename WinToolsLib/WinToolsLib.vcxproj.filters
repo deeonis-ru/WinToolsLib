@@ -153,6 +153,8 @@
     <ClInclude Include="Process\Thread.h" />
     <ClInclude Include="Process\IWaitable.h" />
     <ClInclude Include="Process\Event.h" />
+    <ClInclude Include="Os\Win32Service\Service.h" />
+    <ClInclude Include="Os\Win32Service\Factory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libudis86\decode.c" />
@@ -264,5 +266,7 @@
     <ClCompile Include="Process\Process.cpp" />
     <ClCompile Include="Process\Thread.cpp" />
     <ClCompile Include="Process\Event.cpp" />
+    <ClCompile Include="Os\Win32Service\Factory.cpp" />
+    <ClCompile Include="Os\Win32Service\Service.cpp" />
   </ItemGroup>
 </Project>

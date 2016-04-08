@@ -88,6 +88,7 @@
     <ClInclude Include="Disasm.h" />
     <ClInclude Include="DynamicFunction.h" />
     <ClInclude Include="Environment.h" />
+    <ClInclude Include="Os\Win32Service\Factory.h" />
     <ClInclude Include="Process\Event.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="Executable.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Cryptography\IHash.h" />
     <ClInclude Include="Cryptography\Sha.h" />
     <ClInclude Include="Serialization\ISerializer.h" />
+    <ClInclude Include="Os\Win32Service\Service.h" />
     <ClInclude Include="Signals\AnonymousConnection.h" />
     <ClInclude Include="Signals\ClassConnection.h" />
     <ClInclude Include="Signals\ConnectionBase.h" />
@@ -204,6 +206,8 @@
     <ClCompile Include="Com\Variant.cpp" />
     <ClCompile Include="Concurrency\WorkQueue.cpp" />
     <ClCompile Include="Cryptography\SymmetricCipher.cpp" />
+    <ClCompile Include="Os\Win32Service\Factory.cpp" />
+    <ClCompile Include="Os\Win32Service\Service.cpp" />
     <ClCompile Include="Process\Mutex.cpp" />
     <ClCompile Include="Os\Firewall\FirewallPolicy.cpp" />
     <ClCompile Include="Os\Firewall\Rule.cpp" />
