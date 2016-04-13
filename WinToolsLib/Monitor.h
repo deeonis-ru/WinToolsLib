@@ -24,9 +24,9 @@ namespace WinToolsLib
 		}
 		
 		explicit Monitor(T&& t) :
+			m_lock(std::make_unique<std::mutex>()),
 			m_t(std::move(t))
 		{
-			Monitor();
 		}
 
 		Monitor(Monitor&& other)
